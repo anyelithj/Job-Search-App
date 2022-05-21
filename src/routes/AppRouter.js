@@ -14,7 +14,6 @@ function AppRouter() {
         <Route path="/companies/new" element={<RegisterEmployer />} />
         <Route path="/webpros/login" element={<RegisterEmployee />} />
         <Route path="/members/auth/login" element={<LoginEmployeer />} />
-
      </Routes>
     </Router>
   );
