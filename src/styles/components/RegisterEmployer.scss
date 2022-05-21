@@ -1,0 +1,26 @@
+@import "base";
+
+.cont-grid{
+  border-bottom: 1px solid rgba(135,153,160,0.25);
+}
+
+.container-form {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.label-text-form{
+  color: $colorPrimary !important;
+  font-weight: 600 !important;
+}
+
+.text-help{
+  color: $colorText;
+  font-size: 14px !important;
+  padding: 5% 0 !important;
+}
+
+
+.btn-register-company{
+  margin: 2% 0% 2% 3%;
+}
