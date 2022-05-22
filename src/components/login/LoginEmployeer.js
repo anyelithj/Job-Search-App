@@ -3,6 +3,8 @@ import "../../styles/components/Login.scss";
 import { useNavigate } from 'react-router-dom'
 import { authContext } from '../../context/AuthContext'
 import { post } from '../../helpers/url'
+import TextField from '@mui/material/TextField';
+//import Button from "@mui/material/Button";
 
 const LoginEmployeer = () => {
 
@@ -34,15 +36,36 @@ const LoginEmployeer = () => {
 
 }
 
+
+
   return (
     <div className='bodyLogin'>
     <div className = "form">
         <div className = "formContainer">
             <form onSubmit={login}>
-                <input ref={email} placeholder='Email...' type="email" />
-                <input ref={password} placeholder='Password...' type="password" />
-
-                <button>Login</button>
+            <div>
+            <TextField
+              inputRef={email} 
+              required
+              label="Email"
+              type="email" 
+              placeholder='Email...'
+              margin="normal"
+              />
+              </div>
+              <div>
+             <TextField
+              inputRef={password} 
+              required
+              label="Password"
+              type="password" 
+              placeholder='Password...'
+              margin="normal"
+              />
+              </div>
+              <button>
+              Login
+            </button>
             </form>
         </div>
     </div>

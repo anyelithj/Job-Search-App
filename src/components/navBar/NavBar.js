@@ -17,12 +17,13 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import PersonIcon from "@mui/icons-material/Person";
+import { useNavigate } from "react-router-dom";
 
 
 export const NavBar = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-
+  const navigate = useNavigate()
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -46,6 +47,12 @@ export const NavBar = () => {
   }
 
 
+  
+  const handleClick = () =>{
+    navigate('/members/auth/login')
+  }
+
+
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -55,7 +62,9 @@ export const NavBar = () => {
 
     prevOpen.current = open;
   }, [open]);
+ 
   return (
+    
     <Box sx={{ flexGrow: 1, mb: "4rem" }}>
       <AppBar className="navbar" position="static">
         <Toolbar>
@@ -78,7 +87,7 @@ export const NavBar = () => {
             <span className="logo"> Job search App</span>
           </Typography>
           <div>
-            <Button color="primary">Inicio sesión</Button>
+            <Button color="primary" onClick={handleClick}>Inicio sesión</Button>
           </div>
           <div>
             <Button
