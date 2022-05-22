@@ -18,9 +18,11 @@ import MenuList from "@mui/material/MenuList";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import PersonIcon from "@mui/icons-material/Person";
 
+
 export const NavBar = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -42,6 +44,7 @@ export const NavBar = () => {
       setOpen(false);
     }
   }
+
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
