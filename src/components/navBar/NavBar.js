@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,12 +18,16 @@ import MenuList from "@mui/material/MenuList";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
-
+import { authContext } from '../../context/AuthContext';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { fabClasses } from "@mui/material";
 
 export const NavBar = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const navigate = useNavigate()
+
+  const context = useContext(authContext)
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -52,6 +56,15 @@ export const NavBar = () => {
     navigate('/members/auth/login')
   }
 
+  const handleLogOut = () =>{
+    localStorage.removeItem("token")
+    context.setAuth({
+      logged:false,
+      name:"",
+      id:""
+    })
+  }
+
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
@@ -63,6 +76,7 @@ export const NavBar = () => {
     prevOpen.current = open;
   }, [open]);
  
+
   return (
     
     <Box sx={{ flexGrow: 1, mb: "4rem" }}>
@@ -87,9 +101,11 @@ export const NavBar = () => {
             <span className="logo"> Job search App</span>
           </Typography>
           <div>
-            <Button color="primary" onClick={handleClick}>Inicio sesión</Button>
+          {!context.auth.logged&&<Button color="primary" onClick={handleClick}>Inicio sesión</Button>}
+          {context.auth.logged&&<h5>{context.auth.name}</h5>}
           </div>
           <div>
+          {!context.auth.logged&&
             <Button
               ref={anchorRef}
               variant="outlined"
@@ -100,7 +116,8 @@ export const NavBar = () => {
               onClick={handleToggle}
             >
               Registrarse
-            </Button>
+            </Button>}
+            
             <Popper
               open={open}
               anchorEl={anchorRef.current}
@@ -149,6 +166,7 @@ export const NavBar = () => {
                 </Grow>
               )}
             </Popper>
+            {context.auth.logged&&<Button color="primary" fontSize="medium"  onClick={handleLogOut}><LogoutIcon color="primary" fontSize="medium">cerrar sesion</LogoutIcon></Button>}
           </div>
         </Toolbar>
       </AppBar>
