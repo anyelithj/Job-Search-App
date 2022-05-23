@@ -71,9 +71,19 @@ export const NavBar = () => {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            
             <span className="logo"> Job search App</span>
           </Typography>
+          <div>
+            <Link
+              className="link-menu"
+              href="/webpros/empleos"
+              underline="none"
+            >
+              <MenuItem onClick={handleClose}>
+                <PersonIcon /> Empleos
+              </MenuItem>
+            </Link>
+          </div>
           <div>
             <Button color="primary">Inicio sesión</Button>
           </div>
