@@ -7,6 +7,7 @@ import { Home } from "../components/pages/Home";
 import { useContext, useEffect } from 'react';
 import { authContext } from '../context/AuthContext';
 import { apiToken } from '../helpers/url';
+import Controls from '../components/categorys/Controls';
 
 function AppRouter() {
 
@@ -36,6 +37,7 @@ function AppRouter() {
         <Route path="/registrarse" element={<RegisterEmployer />} />
         <Route path="/webpros/login" element={<RegisterEmployee />} />
         <Route path="/login" element={<LoginEmployeer />} />
+        <Route path="/empleos" element={<Controls/>}/>
      </Routes>
     </Router>
   );

@@ -29,6 +29,27 @@ const apiToken = async (url,data)=>{
     
 }
 
+const apiTokenJobs = async (url)=>{
+    const token = localStorage.getItem("token")
+    console.log(token);
+    if(token){
+        console.log('dentro de if');
+        return await instance.get(url,{
+            headers:{
+                'Authorization':"Bearer "+localStorage.getItem("token")
+            }
+        })
+    }
+
+    return {
+        data:{
+            failed:true,
+            message:"No tienes token"
+        }
+    }
+    
+}
+
 export default instance
 
-export {post,apiToken}
+export {post,apiToken,apiTokenJobs}

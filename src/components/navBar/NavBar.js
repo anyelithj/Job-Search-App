@@ -19,6 +19,8 @@ import { useNavigate } from "react-router-dom";
 import { authContext } from '../../context/AuthContext';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { fabClasses } from "@mui/material";
+import WorkIcon from '@mui/icons-material/Work';
+import Link from "@mui/material/Link";
 
 export const NavBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -80,6 +82,13 @@ export const NavBar = () => {
             
             <span className="logo"> Job search App</span>
           </Typography>
+          <div>
+          <Link className="link-menu" href="/empleos" underline="none">
+              <MenuItem>
+                <WorkIcon /> Empleos
+              </MenuItem>
+          </Link>
+            </div>
           <div>
           {!context.auth.logged&&<Button color="primary" onClick={handleClick}>Inicio sesión</Button>}
           {context.auth.logged&&<h5>{context.auth.name}</h5>}
