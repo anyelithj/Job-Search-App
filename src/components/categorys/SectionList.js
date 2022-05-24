@@ -3,7 +3,9 @@ import React from 'react'
 const SectionList = () => {
   return (
     <div>
-       <h2>Select</h2>
+       <select name='id'>
+         <option value="">...</option>
+       </select>
     </div>
   )
 }

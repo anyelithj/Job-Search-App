@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import WorkIcon from '@mui/icons-material/Work';
 import "../../styles/components/NavBar.scss";
 import "../../styles/components/logo.scss";
 import Link from "@mui/material/Link";
@@ -17,10 +18,17 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import PersonIcon from "@mui/icons-material/Person";
+import { useNavigate } from "react-router-dom";
+import { authContext } from "../../context/AuthContext";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { fabClasses } from "@mui/material";
 
 export const NavBar = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const navigate = useNavigate();
+
+  const context = useContext(authContext);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -43,6 +51,19 @@ export const NavBar = () => {
     }
   }
 
+  const handleClick = () => {
+    navigate("/members/auth/login");
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    context.setAuth({
+      logged: false,
+      name: "",
+      id: "",
+    });
+  };
+
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -52,6 +73,7 @@ export const NavBar = () => {
 
     prevOpen.current = open;
   }, [open]);
+
   return (
     <Box sx={{ flexGrow: 1, mb: "4rem" }}>
       <AppBar className="navbar" position="static">
@@ -74,31 +96,35 @@ export const NavBar = () => {
             <span className="logo"> Job search App</span>
           </Typography>
           <div>
-            <Link
-              className="link-menu"
-              href="/webpros/empleos"
-              underline="none"
-            >
+            <Link className="link-menu" href="/empleos" underline="none">
               <MenuItem onClick={handleClose}>
-                <PersonIcon /> Empleos
+                <WorkIcon /> Empleos
               </MenuItem>
             </Link>
           </div>
           <div>
-            <Button color="primary">Inicio sesión</Button>
+            {!context.auth.logged && (
+              <Button color="primary" onClick={handleClick}>
+                Inicio sesión
+              </Button>
+            )}
+            {context.auth.logged && <h5>{context.auth.name}</h5>}
           </div>
           <div>
-            <Button
-              ref={anchorRef}
-              variant="outlined"
-              id="composition-button"
-              aria-controls={open ? "composition-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-haspopup="true"
-              onClick={handleToggle}
-            >
-              Registrarse
-            </Button>
+            {!context.auth.logged && (
+              <Button
+                ref={anchorRef}
+                variant="outlined"
+                id="composition-button"
+                aria-controls={open ? "composition-menu" : undefined}
+                aria-expanded={open ? "true" : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+              >
+                Registrarse
+              </Button>
+            )}
+
             <Popper
               open={open}
               anchorEl={anchorRef.current}
@@ -147,6 +173,13 @@ export const NavBar = () => {
                 </Grow>
               )}
             </Popper>
+            {context.auth.logged && (
+              <Button color="primary" fontSize="medium" onClick={handleLogOut}>
+                <LogoutIcon color="primary" fontSize="medium">
+                  cerrar sesion
+                </LogoutIcon>
+              </Button>
+            )}
           </div>
         </Toolbar>
       </AppBar>
