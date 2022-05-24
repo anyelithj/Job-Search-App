@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { authContext } from '../../context/AuthContext'
 import { post } from '../../helpers/url'
 import TextField from '@mui/material/TextField';
-//import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 
 const LoginEmployeer = () => {
 
@@ -63,9 +63,7 @@ const LoginEmployeer = () => {
               margin="normal"
               />
               </div>
-              <button>
-              Login
-            </button>
+            <Button color="primary" type="submit">Inicio sesión</Button>
             </form>
         </div>
     </div>

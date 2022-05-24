@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../../styles/components/NavBar.scss";
 import "../../styles/components/logo.scss";
-import Link from "@mui/material/Link";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import Paper from "@mui/material/Paper";
@@ -16,7 +15,6 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import { authContext } from '../../context/AuthContext';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -31,29 +29,12 @@ export const NavBar = () => {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+    navigate('/registrarse')
   };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
-      setOpen(false);
-    }
-  }
-
 
   
   const handleClick = () =>{
-    navigate('/members/auth/login')
+    navigate('/login')
   }
 
   const handleLogOut = () =>{
@@ -72,7 +53,6 @@ export const NavBar = () => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
-
     prevOpen.current = open;
   }, [open]);
  
@@ -114,58 +94,8 @@ export const NavBar = () => {
               aria-expanded={open ? "true" : undefined}
               aria-haspopup="true"
               onClick={handleToggle}
-            >
-              Registrarse
+            > Registrarse
             </Button>}
-            
-            <Popper
-              open={open}
-              anchorEl={anchorRef.current}
-              role={undefined}
-              placement="bottom-start"
-              transition
-              disablePortal
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === "bottom-start" ? "left top" : "left bottom",
-                  }}
-                >
-                  <Paper>
-                    <ClickAwayListener onClickAway={handleClose}>
-                      <MenuList
-                        autoFocusItem={open}
-                        id="composition-menu"
-                        aria-labelledby="composition-button"
-                        onKeyDown={handleListKeyDown}
-                      >
-                        <Link
-                          className="link-menu"
-                          href="/companies/new"
-                          underline="none"
-                        >
-                          <MenuItem onClick={handleClose}>
-                            <ApartmentIcon /> Empleadores
-                          </MenuItem>
-                        </Link>
-                        <Link
-                          className="link-menu"
-                          href="/webpros/login"
-                          underline="none"
-                        >
-                          <MenuItem onClick={handleClose}>
-                            <PersonIcon /> Postulantes
-                          </MenuItem>
-                        </Link>
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
             {context.auth.logged&&<Button color="primary" fontSize="medium"  onClick={handleLogOut}><LogoutIcon color="primary" fontSize="medium">cerrar sesion</LogoutIcon></Button>}
           </div>
         </Toolbar>

@@ -33,9 +33,9 @@ function AppRouter() {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/companies/new" element={<RegisterEmployer />} />
+        <Route path="/registrarse" element={<RegisterEmployer />} />
         <Route path="/webpros/login" element={<RegisterEmployee />} />
-        <Route path="/members/auth/login" element={<LoginEmployeer />} />
+        <Route path="/login" element={<LoginEmployeer />} />
      </Routes>
     </Router>
   );
