@@ -8,6 +8,7 @@ import { useContext, useEffect } from 'react';
 import { authContext } from '../context/AuthContext';
 import { apiToken } from '../helpers/url';
 import Categories from "../components/categorys/Categories";
+import Controls from '../components/categorys/Controls';
 
 function AppRouter() {
 
@@ -34,10 +35,12 @@ function AppRouter() {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/companies/new" element={<RegisterEmployer />} />
+        <Route path="/registrarse" element={<RegisterEmployer />} />
         <Route path="/webpros/login" element={<RegisterEmployee />} />
         <Route path="/empleos" element={<Categories/>}/>
         <Route path="/members/auth/login" element={<LoginEmployeer />} />
+        <Route path="/login" element={<LoginEmployeer />} />
+        <Route path="/empleos" element={<Controls/>}/>
      </Routes>
     </Router>
   );

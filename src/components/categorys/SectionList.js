@@ -4,7 +4,7 @@ const SectionList = () => {
   return (
     <div>
        <select name='id'>
-         <option value="">...</option>
+         <option value="">Elige un...</option>
        </select>
     </div>
   )

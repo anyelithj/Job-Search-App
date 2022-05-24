@@ -9,7 +9,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import WorkIcon from '@mui/icons-material/Work';
 import "../../styles/components/NavBar.scss";
 import "../../styles/components/logo.scss";
-import Link from "@mui/material/Link";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import Paper from "@mui/material/Paper";
@@ -17,11 +16,12 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../../context/AuthContext";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { fabClasses } from "@mui/material";
+import PersonIcon from '@mui/icons-material/Person';
+import Link from "@mui/material/Link";
 
 export const NavBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -32,6 +32,7 @@ export const NavBar = () => {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+    navigate('/registrarse')
   };
 
   const handleClose = (event) => {
@@ -70,7 +71,6 @@ export const NavBar = () => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
-
     prevOpen.current = open;
   }, [open]);
 
