@@ -11,14 +11,11 @@ import { useNavigate } from 'react-router-dom'
 const Controls = () => {
 
   const context = useContext(authContext);
-  // const [state, setState] = useState("");
-  // const [twon, setTown] = useState("");
-  // const [suburb, setSuburb] = useState("");
+ 
   const [lenguaje, setLenguaje] = useState("");
   const [pais, setPais] = useState("");
   const [salario, setSalario] = useState("");
-  
-// const TOKEN = "d81a7ac7-976d-4e1e-b7d3-b1979d791b6c";
+
 
   // useEffect(()=>{
   //   apiTokenJobs("/api/jobs")
@@ -32,7 +29,6 @@ const Controls = () => {
     <h2>Categorias</h2>
     <SectionList
       title="category"
-      url={`https://api-sepomex.hckdrk.mx/query/get_estados?token=${TOKEN}`}
       handleChange={(e) => {
         setLenguaje(e.target.value);
       }}
@@ -40,7 +36,6 @@ const Controls = () => {
     {lenguaje && (
       <SectionList
       title="location"
-      url={`https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/${state}?token=${TOKEN}`}
       handleChange={(e) => {
         setPais(e.target.value);
       }}
@@ -49,7 +44,6 @@ const Controls = () => {
     {pais && (
        <SectionList
        title="salary"
-       url={`https://api-sepomex.hckdrk.mx/query/get_colonia_por_municipio/${town}?token=${TOKEN}`}
        handleChange={(e) => {
          salario(e.target.value);
        }}
@@ -59,40 +53,7 @@ const Controls = () => {
     <span>{lenguaje} - {pais} - {salario}</span>
   </div>
 
-    // <div>
-    //   <h2>Categorias</h2>
-    //   <SectionList
-    //     title="category"
-    //     url={`https://api-sepomex.hckdrk.mx/query/get_estados?token=${TOKEN}`}
-    //     handleChange={(e) => {
-    //       setState(e.target.value);
-    //     }}
-    //   />
-    //   {state && (
-    //     <SectionList
-    //     title="location"
-    //     url={`https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/${state}?token=${TOKEN}`}
-    //     handleChange={(e) => {
-    //       setTown(e.target.value);
-    //     }}
-    //   />
-    //   )}
-    //   {town && (
-    //      <SectionList
-    //      title="salary"
-    //      url={`https://api-sepomex.hckdrk.mx/query/get_colonia_por_municipio/${town}?token=${TOKEN}`}
-    //      handleChange={(e) => {
-    //        setSuburb(e.target.value);
-    //      }}
-    //    />
-    //   )}
-     
-    //   <pre>
-    //     <code>
-    //       {state}-{town}-{suburb}
-    //     </code>
-    //   </pre>
-    // </div>
+    
   );
 };
 

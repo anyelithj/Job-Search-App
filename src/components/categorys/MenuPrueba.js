@@ -15,7 +15,7 @@ const MenuPrueba = () => {
       });
     }, []);
 
-    const handleSubArticulos = (e) =>{
+    const handleSub = (e) =>{
         const opcion = e.target.value;
         // console.log(opcion);
         setIdArticulos(opcion)
@@ -24,7 +24,7 @@ const MenuPrueba = () => {
   return (
     <div>
       <h2>Categorias</h2>
-      {/* <select name='categorias' id='selCategorias' onClick={handleSubArticulos}>
+      {/* <select name='categorias' id='selCategorias' onClick={handleSub}>
         <option value={-1}>Seleccione una opción:</option>
         {
             data.data.map((item, i)=>(
