@@ -95,12 +95,13 @@ export const NavBar = () => {
           >
             <span className="logo"> Job search App</span>
           </Typography>
-          <div>
+        
+          <div>{context.auth.logged &&(
             <Link className="link-menu" href="/empleos" underline="none">
               <MenuItem onClick={handleClose}>
                 <WorkIcon /> Empleos
               </MenuItem>
-            </Link>
+            </Link>)}
           </div>
           <div>
             {!context.auth.logged && (
