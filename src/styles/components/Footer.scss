@@ -1,0 +1,28 @@
+.footer-container {
+  background-color: rgb(100, 100, 247);
+  color: #fff;
+  padding: 4rem 0 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links {
+   width: 100%;
+   max-width: 1000px;
+   display: flex;
+   justify-content: center;
+   &-wrapper{
+    display: flex;
+   }
+   &-items{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 16px;
+    text-align: left;
+    width: 160px;
+   }
+}
+
