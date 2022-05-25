@@ -1,8 +1,9 @@
 .footer-container {
-  background-color: #9a7ddd;
+  background-color: rgb(100, 100, 247);
+  color: #fff;
   padding: 4rem 0 2rem 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -17,7 +18,7 @@
    }
    &-items{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     margin: 16px;
     text-align: left;
