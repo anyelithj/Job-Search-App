@@ -81,6 +81,11 @@ const RegisterEmployer = () => {
               type="email" 
               placeholder='Email...'
               margin="normal"
+              sx={{
+                input: {
+                  background: "white"
+                }
+              }}
               /></div>
 
             <div>
@@ -91,6 +96,11 @@ const RegisterEmployer = () => {
               type="text" 
               placeholder='Nombre...'
               margin="normal"
+              sx={{
+                input: {
+                  background: "white"
+                }
+              }}
               />
               </div>
               <div>
@@ -101,6 +111,11 @@ const RegisterEmployer = () => {
               type="password" 
               placeholder='Password...'
               margin="normal"
+              sx={{
+                input: {
+                  background: "white"
+                }
+              }}
               />
               </div>
               <div>
@@ -110,15 +125,19 @@ const RegisterEmployer = () => {
         <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
-          value={rol}
+          value={'Rol'}
           onChange={handleChange}
           label="Rol"
+          sx={{ background: 'white' }}
         >
           <MenuItem value={'applicant'}>Postulante</MenuItem>
           <MenuItem value={'employer'}>Empleador</MenuItem>
         </Select>
              </div>
-            <Button color="primary" type="submit">Registrarse</Button>
+
+             <div>
+            <Button color="primary" type="submit" variant="contained">Registrarse</Button>
+            </div>
             </form>
             {error.loading&&<p>Cargando.... Espere...</p>}
             {error.isError&&<p>{error.message}</p>}

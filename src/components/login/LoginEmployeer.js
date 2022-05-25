@@ -51,6 +51,11 @@ const LoginEmployeer = () => {
               type="email" 
               placeholder='Email...'
               margin="normal"
+              sx={{
+                input: {
+                  background: "white"
+                }
+              }}
               />
               </div>
               <div>
@@ -61,9 +66,14 @@ const LoginEmployeer = () => {
               type="password" 
               placeholder='Password...'
               margin="normal"
+              sx={{
+                input: {
+                  background: "white"
+                }
+              }}
               />
               </div>
-            <Button color="primary" type="submit">Inicio sesión</Button>
+            <Button color="primary" type="submit" variant="contained">Inicio sesión</Button>
             </form>
         </div>
     </div>
